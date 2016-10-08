@@ -23,7 +23,13 @@
 - hosts: default
   sudo: yes
   vars:
-    nginx_rpm_key_dest: /etc/pki/rpm-gpg/nginx.key 
+    nginx_rpm_key_dest: /etc/pki/rpm-gpg/nginx.key
+    dev_group: developer
+    dev_user: developer
+    dev_gid: 2000
+    dev_uid: 2000
+    dev_password: developer
+
   tasks:
     - include: development-server.yml
   handlers:

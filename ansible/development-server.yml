@@ -37,7 +37,9 @@
        - git
        - nginx
        - node
-§ 
+       - npm
+       - ruby
+        
    - name: Copy nginx config 
      template: src=./nginx/default.conf dest=/etc/nginx/conf.d/default.conf 
 
@@ -57,5 +59,30 @@
 
    - name: Enable and start nginx
      service: name=nginx enabled=yes state=restarted
+
+   - name: Create developer group
+     group: 
+       gid: {{ dev_gid }}
+       name: {{ dev_group }}
+       system: no
+       state; present
+
+   - name: Create developer user
+     user:
+       uid: {{ dev_uid }}
+       name: {{ dev_user }}
+       group: {{ dev_group }}
+       comment: "Development User"
+       password: "{{ dev_password | password_hash('sha512') }}"
+       shell: /bin/bash
+       create_home: yes
+       update_password: on_create
+       system: no
+       state: present
+     register: developer_user
+
+   - name: Force developer user to change password iff it was just created
+     shell: chage -d 0 {{ dev_user }}
+     when: developer_user.changed
 
 

@@ -46,3 +46,11 @@ vagrant up
 
 ## Background
 
+### Creating Users
+
+The ansible script creates a developer user but needs to handle forcing the password to change.  There are some links that may help with this
+
+* Creating user and password [stackoverflow post](http://stackoverflow.com/questions/19292899/creating-a-new-user-and-password-with-ansible)
+* Documention for [user module](http://docs.ansible.com/ansible/user_module.html)
+
+

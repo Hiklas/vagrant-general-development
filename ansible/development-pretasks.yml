@@ -17,25 +17,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+   - name: Install Python2 
+     raw: sudo dnf install python
 
 
----
-- hosts: default
-  sudo: yes
-  vars:
-    nginx_rpm_key_dest: /etc/pki/rpm-gpg/nginx.key
-    dev_group: developer
-    dev_user: developer
-    dev_gid: 2000
-    dev_uid: 2000
-    dev_password: developer
-
-  pre_tasks:
-    - include development-pretasks.yml
-  tasks:
-    - include: development-server.yml
-  handlers:
-    - include: development-handlers.yml
 
 
-    

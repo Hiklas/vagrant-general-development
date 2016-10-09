@@ -62,16 +62,16 @@
 
    - name: Create developer group
      group: 
-       gid: {{ dev_gid }}
-       name: {{ dev_group }}
+       gid: "{{ dev_gid }}"
+       name: "{{ dev_group }}"
        system: no
-       state; present
+       state: present
 
    - name: Create developer user
      user:
-       uid: {{ dev_uid }}
-       name: {{ dev_user }}
-       group: {{ dev_group }}
+       uid: "{{ dev_uid }}"
+       name: "{{ dev_user }}"
+       group: "{{ dev_group }}"
        comment: "Development User"
        password: "{{ dev_password | password_hash('sha512') }}"
        shell: /bin/bash

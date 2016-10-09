@@ -208,6 +208,12 @@ sudo make install
 
 Now running the commands to install ansible appears to work and is able to pickup the OpenSSL headers/library.
 
+### Python2 Dependency
+
+Apparently Ansible [now needs python2](http://stackoverflow.com/questions/32429259/ansible-fails-with-bin-sh-1-usr-bin-python-not-found#34402816)
+
+The dependencies are given [here](http://docs.ansible.com/ansible/intro_installation.html#managed-node-requirements)
+
 
 ### Creating Users
 

@@ -85,4 +85,10 @@
      shell: chage -d 0 {{ dev_user }}
      when: developer_user.changed
 
+   - name: Set the graphical startup as default
+     raw: systemctl set-default graphical.target
+
+   - name: Switch to graphical stsrtup
+     raw: systemctl isolate graphical.target
+
 

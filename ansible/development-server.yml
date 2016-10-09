@@ -22,13 +22,13 @@
      get_url: url=http://nginx.org/keys/nginx_signing.key dest={{ nginx_rpm_key_dest }} mode=0644 owner=root group=root
 
    - name: Ensure Nginx GPG key is imported
-     command: rpm --import {{ nginx_rpm_key_dest }}
+     command: rpm --import "{{ nginx_rpm_key_dest }}"
 
    - name: Ensure nginx repository is added
-     yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present 
+     dnf: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present 
 
    - name: Install packages
-     yum: name={{ item }} state=present
+     dnf: name={{ item }} state=present
      with_items:
        - net-tools
        - maven
@@ -75,7 +75,7 @@
        comment: "Development User"
        password: "{{ dev_password | password_hash('sha512') }}"
        shell: /bin/bash
-       create_home: yes
+       createhome: yes
        update_password: on_create
        system: no
        state: present

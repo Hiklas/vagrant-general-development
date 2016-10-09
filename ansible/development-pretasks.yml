@@ -18,8 +18,16 @@
 #
 
    - name: Install Python2 
-     raw: sudo dnf install python
+     raw: dnf install -y python
 
 
+   - name: Install Python2-dnf
+     raw: dnf install -y python2-dnf
+
+   - name: Install libselinux-python
+     raw: dnf install -y libselinux-python
+
+   - name: Install python-firewall
+     raw: dnf install -y python-firewall
 
 

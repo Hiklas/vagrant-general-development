@@ -37,7 +37,11 @@ Install ansible
 
 ```
 pip install ansible
+pip install passlib 
 ```
+
+The passlib module is needed for password generation
+
 
 ### Inital VM
 

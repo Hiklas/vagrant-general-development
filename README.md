@@ -193,6 +193,8 @@ After some research it seems that MacOS doesn't ship with OpenSSL headers.  To r
 
 The archive was downloaded from [here](https://www.openssl.org/source/openssl-1.1.0b.tar.gz)
 
+Instructions for building can be found [here](https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X)
+
 Un-archived and then ran the following commands to build and deploy
 
 ```

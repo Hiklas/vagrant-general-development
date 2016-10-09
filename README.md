@@ -15,6 +15,7 @@ Intended as an environment to play with development tools for apprentices, train
 * VirtualBox
 * Vagrant
 * Python 
+* OpenSSL - Need to build for MacOS
 
 The code was developed and tested on a Mac but should work fine on other platforms that meet the above requirements.
 
@@ -184,6 +185,26 @@ Installed the latest XCode tools using the following command
 xcode-select --install
 ```
 
+### Missing OpenSSL headers
+
+After the above problems more compile errors occur when trying to install Ansible using pip.
+
+After some research it seems that MacOS doesn't ship with OpenSSL headers.  To resolve this issue I needed to download and build the OpenSSL library.
+
+The archive was downloaded from [here](https://www.openssl.org/source/openssl-1.1.0b.tar.gz)
+
+Un-archived and then ran the following commands to build and deploy
+
+```
+./Configure darwin64-x86_64-cc shared enable-ec_nistp_64_gcc_128 no-ssl2 no-ssl3 no-comp --openssldir=/usr/local/ssl/macos-x86_64
+make depend
+make
+su - admin
+cd <working directory> # substitue path to where the OpenSSL code is
+sudo make install
+```
+
+Now running the commands to install ansible appears to work and is able to pickup the OpenSSL headers/library.
 
 
 ### Creating Users
@@ -192,5 +213,6 @@ The ansible script creates a developer user but needs to handle forcing the pass
 
 * Creating user and password [stackoverflow post](http://stackoverflow.com/questions/19292899/creating-a-new-user-and-password-with-ansible)
 * Documention for [user module](http://docs.ansible.com/ansible/user_module.html)
+
 
 
